@@ -1,6 +1,5 @@
 """
 author: Peter Lorenz
-http://www.arxiv-sanity.com/top
 """
 
 
@@ -17,6 +16,9 @@ import pdb
 #   sort_order: SortOrder = SortOrder.Descending
 # )
 
+
+MAX_NR_DOWNLOAD = 200
+DOWNLOAD = False
 
 
 logging.basicConfig(level=logging.INFO)
@@ -37,12 +39,11 @@ for result in search.results():
     if len(intersect) > 0:
         nr_papers = len(wanted_result)  
 
-        if nr_papers > 10:
+        if nr_papers > MAX_NR_DOWNLOAD:
             break
 
         wanted_result.append(result)
-        #pdb.set_trace()
-        print(nr_papers , result.updated.year, result.updated.month, result.title )
-    
+        print(nr_papers, "\t" , result.entry_id, result.updated.year, result.updated.month, result.title )
 
-        #result.download_pdf(dirpath="./pdfs")
+    if DOWNLOAD:
+        result.download_pdf(dirpath="./pdfs")
