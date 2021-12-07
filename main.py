@@ -1,4 +1,8 @@
-import arxiv
+"
+author: Peter Lorenz
+"
+import logging
+import arxiv # https://awesomeopensource.com/project/lukasschwab/arxiv.py?...
 import pdb
 
 # arxiv.Search(
@@ -9,6 +13,9 @@ import pdb
 #   sort_order: SortOrder = SortOrder.Descending
 # )
 
+
+
+logging.basicConfig(level=logging.INFO)
 
 search = arxiv.Search(
     query = "adversarial",
@@ -34,4 +41,4 @@ for result in search.results():
         print(nr_papers , result.updated.year, result.updated.month, result.title )
     
 
-        result.download_pdf(dirpath="./pdfs")
+        #result.download_pdf(dirpath="./pdfs")
