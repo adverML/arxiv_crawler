@@ -26,12 +26,12 @@ for result in search.results():
     if len(intersect) > 0:
         nr_papers = len(wanted_result)  
 
-        if nr_papers > 1000:
-            breaks
+        if nr_papers > 10:
+            break
 
         wanted_result.append(result)
-        pdb.set_trace()
+        #pdb.set_trace()
         print(nr_papers , result.updated.year, result.updated.month, result.title )
     
 
-        result.download_source(dirpath="./pdfs")
+        result.download_pdf(dirpath="./pdfs")
